@@ -1,0 +1,17 @@
+<div class="calendar">
+    <div class="calendar-heading">
+        <span class="nav" (click)="prev(10, 'years')">⇚</span>
+        <span class="nav" (click)="prev(1, 'years')">⇐</span>
+        <span class="nav" (click)="prev(1, 'months')">←</span>
+        <span class="nav-now">{{getViewMonth()}}, {{getViewYear()}}</span>
+        <span class="nav" (click)="next(1, 'months')">→</span>
+        <span class="nav" (click)="next(1, 'years')">⇒</span>
+        <span class="nav" (click)="next(10, 'years')">⇛</span>
+    </div>
+    <div class="calendar-month">
+        <div class="calendar-day" *ngFor="#day of getViewDays()">
+            <div class="calendar-day-heading">{{day.name}} the {{day.ordinal}}</div>
+            <textarea placeholder="Enter notes here..." [(ngModel)]="notes[getDayNotes(day.number)]" (blur)="saveNotes(day.number)"></textarea>
+        </div>
+    </div>
+</div>
